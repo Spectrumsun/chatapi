@@ -16,7 +16,7 @@ module.exports = function (io) {
       });
 
       io.emit('message display', {});
-      callback();
+      //callback();
       console.log(message);
     });
     socket.on('refresh', function(){
