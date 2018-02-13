@@ -14,9 +14,11 @@ module.exports = function (io) {
         text: message.text,
         sender: message.sender
       });
+      callback();
 
       io.emit('message display', {});
-      //callback();
+
+      //
       console.log(message);
     });
     socket.on('refresh', function(){

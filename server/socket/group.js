@@ -26,7 +26,7 @@ module.exports = function(io) {
             io.to(message.room).emit('newMessage', {
                 text: message.text,
                 room: message.room,
-from : message.sender
+                from: message.sender
             })
            // callback();
         });
