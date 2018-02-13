@@ -1,0 +1,61 @@
+<html>
+    <h1>HI</h1>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        var room = 'genral'
+        var sender =  'sam'
+
+        socket.on('connect', function(){
+            console.log('Yea!! Formu Connected');
+        
+            var params = {
+                room: room,
+                name: sender
+            }
+            //send to a single room
+            socket.emit('join', params, function (users) {
+                console.log('User has joined this channel') 
+            })
+ })
+
+
+
+    socket.on('connect', function(){
+     console.log('General Connected')
+
+        const room = 'GlobalRoom';
+        const name = 'all'
+        const img = 'image.png';
+
+        socket.emit('global room', {
+            room: room,
+            name: name,
+            img: img
+        });
+
+    });
+
+
+
+     socket.on('connect', function(){
+        var params = {
+           room1: 'jame.jone',
+           room2: 'jone.jame'
+        } 
+       
+        socket.emit('join PM', params, function(){
+            console.log('private')
+        });
+
+       
+    });
+
+
+
+    
+    
+    
+    </script>
+</html>
