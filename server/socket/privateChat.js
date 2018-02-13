@@ -9,18 +9,31 @@ module.exports = function (io) {
       callback
     });
 
-    socket.on('private message', (message, callback) => {
+  /*   socket.on('private message', (message) => {
       io.to(message.room).emit('new message', {
         text: message.text,
         sender: message.sender
       });
-      callback();
+      //callback();
 
       io.emit('message display', {});
 
-      //
       console.log(message);
-    });
+    }); */
+
+     socket.on('private message', (message, callback) => {
+            console.log(message);
+
+        //send messageg back to all a roo
+            io.to(message.room).emit('newMessage', {
+                text: message.text,
+                from: message.sender
+            })
+           // callback();
+        });
+
+
+
     socket.on('refresh', function(){
             io.emit('new refresh', {});
         });
