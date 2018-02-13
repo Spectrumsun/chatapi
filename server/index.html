@@ -15,42 +15,27 @@
                 name: sender
             }
             //send to a single room
+
             socket.emit('join', params, function (users) {
-                console.log('User has joined this channel') 
+                console.log('User has joined this channel', params) 
             })
+
+            socket.on('newMessage', function (data) {
+               // var template = $('#message-template').html();
+                var message = {
+                    text: data.text,
+                    sender: data.from,
+                    userImage: data.image
+                };
+
+                console.log(message)
+            });
  })
 
 
 
-    socket.on('connect', function(){
-     console.log('General Connected')
-
-        const room = 'GlobalRoom';
-        const name = 'all'
-        const img = 'image.png';
-
-        socket.emit('global room', {
-            room: room,
-            name: name,
-            img: img
-        });
-
-    });
 
 
-
-     socket.on('connect', function(){
-        var params = {
-           room1: 'jame.jone',
-           room2: 'jone.jame'
-        } 
-       
-        socket.emit('join PM', params, function(){
-            console.log('private')
-        });
-
-       
-    });
 
 
 

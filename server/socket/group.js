@@ -15,7 +15,7 @@ module.exports = function(io) {
 
             io.to(params.room).emit('usersList', users.GetUsersList(params.room));
             
-            callback();
+            //callback();
         })
 
         //get message from the client

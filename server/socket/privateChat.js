@@ -1,7 +1,6 @@
 /* eslint-disable */
 module.exports = function (io) {
   io.on('connection', (socket) => {
-    console.log('Private Chat')
     
     socket.on('join PM', (pm, callback) => {
       socket.join(pm.room1);
@@ -15,8 +14,13 @@ module.exports = function (io) {
         text: message.text,
         sender: message.sender
       });
+
+      io.emit('message display', {});
       callback();
       console.log(message);
     });
+    socket.on('refresh', function(){
+            io.emit('new refresh', {});
+        });
   });
 };
