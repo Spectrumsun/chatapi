@@ -28,7 +28,7 @@ module.exports = function(io) {
                 room: message.room,
                 from: message.from
             })
-            callback();
+           // callback();
         });
 
         socket.on('disconnect', () => {
